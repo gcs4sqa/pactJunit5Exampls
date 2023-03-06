@@ -1,0 +1,22 @@
+Consumer
+mvn clean verify
+mvn pact:publish
+
+
+provider
+
+mvn pact:verify -Dpact.verifier.publishResults=true
+or
+mvn clean verify
+
+create a report to see the failure details
+mvn site:site -> view the target failsafe report
+
+
+can i deploy?
+mvn pact:can-i-deploy -Dpacticipant=MyProvider -DpacticipantVersion=1.1-SNAPSHOT
+or
+mvn pact:can-i-deploy -Dpacticipant=MyProvider -Dlatest=true
+
+don't forget to change the version in the consumer pom when re - pact:publish
+
